@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FassBar Manufaktur - Einzigartige Weinfass-Möbel</title>
+    <style>
+        /* --- GRUNDEINSTELLUNGEN --- */
+        :root {
+            --primary-color: #5D4037;
+            /* Dunkles Holz */
+            --secondary-color: #8D6E63;
+            /* Helles Holz */
+            --bg-color: #F5F5F5;
+            /* Heller Hintergrund */
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        /* --- HERO SEKTION (STARTSEITE) --- */
+        .hero {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1600x900/?wine,barrel');
+            /* Platzhalterbild */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* --- SHOP SEKTION --- */
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Platzhalter für Produktbilder - Grau */
+        .product-image {
+            height: 250px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .product-price {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">FassBar Manufaktur</a>
+            <ul class="nav-links">
+                <li><a href="#home">Startseite</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Aus alten Fässern werden Unikate</h1>
+        <p>Handgefertigte Barschränke aus echten Weinfässern. Rustikal, nachhaltig und edel.</p>
+        <a href="#shop" class="btn">Zum Shop</a>
+    </section>
+
+    <section id="shop" class="container">
+        <h2 class="section-title">Unsere Bestseller</h2>
+
+        <div class="shop-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    [Bild: Fass geschlossen]
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Modell "Bordeaux"</div>
+                    <span class="product-price">299,00 €</span>
+                    <p>Klassisches Weinfass, geölt mit einer Tür.</p>
+                    <button class="btn" onclick="addToCart('Bordeaux')">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    [Bild: Fass offen mit Licht]
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Modell "Chardonnay"</div>
+                    <span class="product-price">349,00 €</span>
+                    <p>Mit eingebauter LED-Beleuchtung und Glasboden.</p>
+                    <button class="btn" onclick="addToCart('Chardonnay')">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    [Bild: Fass Doppeltür]
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Modell "Grand Cru"</div>
+                    <span class="product-price">499,00 €</span>
+                    <p>Premium-Ausführung mit Doppeltüren und Weinregal.</p>
+                    <button class="btn" onclick="addToCart('Grand Cru')">In den Warenkorb</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="text-align: center; max-width: 800px;">
+        <h2 class="section-title">Warum ein Weinfass?</h2>
+        <p>Jedes unserer Fässer hat eine Geschichte. Jahrelang reifte darin Wein in französischen Kellern. Wir bereiten
+            das Eichenholz auf und verwandeln es in ein Möbelstück für die Ewigkeit.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FassBar Manufaktur. Alle Rechte vorbehalten.</p>
+        <div class="footer-links">
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+            <a href="#">AGB</a>
+        </div>
+    </footer>
+
+    <script>
+        function addToCart(productName) {
+            alert(productName + " wurde zum Warenkorb hinzugefügt! (Hier würde der Checkout starten)");
+        }
+    </script>
+
+</body>
+
+</html>
