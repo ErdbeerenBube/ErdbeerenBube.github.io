@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alle Produkte - FassBar Manufaktur</title>
+    <style>
+        /* --- GRUNDEINSTELLUNGEN (Identisch zur Startseite) --- */
+        :root {
+            --primary-color: #5D4037;
+            --secondary-color: #8D6E63;
+            --bg-color: #F5F5F5;
+            --text-color: #333;
+            --white: #ffffff;
+            --accent-color: #C0392B;
+            /* Neu: Für Angebot/Neu Badges */
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        /* --- PAGE HEADER (Kleiner als Hero) --- */
+        .page-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .page-header p {
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* --- FILTER LEISTE --- */
+        .filter-bar {
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            border: 1px solid #ddd;
+            background: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-color: var(--secondary-color);
+        }
+
+        /* --- SHOP GRID --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            position: relative;
+            /* Für Badges */
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Badge für "Neu" oder "Angebot" */
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .product-image {
+            height: 250px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .product-price {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+            font-weight: bold;
+        }
+
+        .btn {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+            /* Footer nach unten drücken */
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">FassBar Manufaktur</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="index.html#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Unser Sortiment</h1>
+        <p>Entdecke handgefertigte Unikate aus Eichenfässern</p>
+    </div>
+
+    <div class="filter-bar">
+        <button class="filter-btn active">Alle</button>
+        <button class="filter-btn">Barschränke</button>
+        <button class="filter-btn">Stehtische</button>
+        <button class="filter-btn">Accessoires</button>
+    </div>
+
+    <section class="container">
+        <div class="shop-grid">
+
+            <div class="product-card">
+                <span class="badge">Bestseller</span>
+                <div class="product-image">[Bild: Fass Bordeaux]</div>
+                <div class="product-info">
+                    <span class="product-category">Barschrank</span>
+                    <div class="product-title">Modell "Bordeaux"</div>
+                    <span class="product-price">299,00 €</span>
+                    <button class="btn" onclick="addToCart('Bordeaux')">Details ansehen</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">[Bild: Fass Chardonnay]</div>
+                <div class="product-info">
+                    <span class="product-category">Barschrank</span>
+                    <div class="product-title">Modell "Chardonnay"</div>
+                    <span class="product-price">349,00 €</span>
+                    <button class="btn" onclick="addToCart('Chardonnay')">Details ansehen</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="badge">Neu</span>
+                <div class="product-image">[Bild: Fass Grand Cru]</div>
+                <div class="product-info">
+                    <span class="product-category">Premium Bar</span>
+                    <div class="product-title">Modell "Grand Cru"</div>
+                    <span class="product-price">499,00 €</span>
+                    <button class="btn" onclick="addToCart('Grand Cru')">Details ansehen</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">[Bild: Stehtisch]</div>
+                <div class="product-info">
+                    <span class="product-category">Tische</span>
+                    <div class="product-title">Fass-Stehtisch "Rustikal"</div>
+                    <span class="product-price">189,00 €</span>
+                    <button class="btn" onclick="addToCart('Stehtisch')">Details ansehen</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">[Bild: Weinregal Wand]</div>
+                <div class="product-info">
+                    <span class="product-category">Accessoires</span>
+                    <div class="product-title">Fassdauben Weinregal</div>
+                    <span class="product-price">49,00 €</span>
+                    <button class="btn" onclick="addToCart('Weinregal')">Details ansehen</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">[Bild: Hundebett]</div>
+                <div class="product-info">
+                    <span class="product-category">Haustier</span>
+                    <div class="product-title">Hundebett im Fass</div>
+                    <span class="product-price">129,00 €</span>
+                    <button class="btn" onclick="addToCart('Hundebett')">Details ansehen</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FassBar Manufaktur. Alle Rechte vorbehalten.</p>
+        <div class="footer-links">
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+            <a href="#">AGB</a>
+        </div>
+    </footer>
+
+    <script>
+        function addToCart(productName) {
+            // Hier würde man normalerweise auf eine Produkt-Detailseite leiten
+            // z.B. window.location.href = 'produkt-detail.html';
+            alert("Du hast auf " + productName + " geklickt. Hier ginge es zur Detailansicht.");
+        }
+    </script>
+
+</body>
+
+</html>
