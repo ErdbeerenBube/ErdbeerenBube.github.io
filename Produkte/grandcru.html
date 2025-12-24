@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modell Bordeaux - FassBar Manufaktur</title>
+    <style>
+        /* --- GRUNDEINSTELLUNGEN (Identisch) --- */
+        :root {
+            --primary-color: #5D4037;
+            --secondary-color: #8D6E63;
+            --bg-color: #F5F5F5;
+            --text-color: #333;
+            --white: #ffffff;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- BREADCRUMBS (Brotkrümel-Navigation) --- */
+        .breadcrumbs {
+            max-width: 1200px;
+            margin: 2rem auto 0 auto;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- PRODUKT DETAILS LAYOUT --- */
+        .product-wrapper {
+            max-width: 1200px;
+            margin: 2rem auto 5rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* Zwei Spalten: Bilder | Text */
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Linke Spalte: BILDER */
+        .gallery-container {
+            position: sticky;
+            top: 100px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            background-color: #e0e0e0;
+            /* Platzhalter Grau */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background-color: #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.3s;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: var(--primary-color);
+        }
+
+        /* Rechte Spalte: INFOS */
+        .product-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .price {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .description {
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .features-list {
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li::before {
+            content: "✔";
+            color: var(--secondary-color);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Kauf-Bereich */
+        .purchase-area {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .qty-input {
+            width: 60px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .add-to-cart-btn {
+            flex: 1;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .shipping-info {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* --- RESPONSIVE (Handy) --- */
+        @media (max-width: 768px) {
+            .product-wrapper {
+                grid-template-columns: 1fr;
+                /* Untereinander auf Handy */
+                gap: 2rem;
+            }
+
+            .product-info h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">FassBar Manufaktur</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="index.html#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="breadcrumbs">
+        <a href="index.html">Startseite</a> &gt;
+        <a href="shop.html">Shop</a> &gt;
+        <span>Modell "Grand Cru"</span>
+    </div>
+
+    <div class="product-wrapper">
+
+        <div class="gallery-container">
+            <div class="main-image" id="mainDisplay">
+                [Hauptbild: Fass Frontal]
+            </div>
+
+            <div class="thumbnail-row">
+                <div class="thumbnail active" onclick="changeImage('Bild 1', this)"></div>
+                <div class="thumbnail" onclick="changeImage('Bild 2', this)"></div>
+                <div class="thumbnail" onclick="changeImage('Bild 3', this)"></div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1>Modell "Grand Cru"</h1>
+            <div class="price">299,99 €</div>
+
+            <p class="description">
+                Unser Klassiker. Dieses Weinfass diente 5 Jahre lang zur Lagerung von Rotwein in Frankreich, bevor es in
+                unserer Manufaktur liebevoll aufgearbeitet wurde.
+                <br><br>
+                Das Holz wurde geschliffen, geölt und die Ringe neu versiegelt. Es ist der perfekte Blickfang für dein
+                Wohnzimmer oder den Weinkeller.
+            </p>
+
+            <ul class="features-list">
+                <li>Material: Massives Eichenholz (gebraucht)</li>
+                <li>Höhe: ca. 95 cm, Durchmesser: ca. 70 cm</li>
+                <li>1 Einlegeboden (herausnehmbar)</li>
+                <li>Türscharniere aus geschmiedetem Stahl</li>
+                <li>Oberfläche: Geölt (Natur)</li>
+            </ul>
+
+            <div class="purchase-area">
+                <input type="number" class="qty-input" value="1" min="1">
+                <button class="add-to-cart-btn" onclick="addToCart()">In den Warenkorb</button>
+            </div>
+
+            <div class="shipping-info">
+                🚚 <strong>Lieferzeit:</strong> 5-7 Werktage (Speditionsversand)<br>
+                ✅ Auf Lager
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 FassBar Manufaktur. Alle Rechte vorbehalten.</p>
+        <div class="footer-links">
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+            <a href="#">AGB</a>
+        </div>
+    </footer>
+
+    <script>
+        // Funktion für Bilderwechsel (Simuliert)
+        function changeImage(imgName, element) {
+            // 1. Text im großen Bild ändern (später: src Attribut ändern)
+            const mainDisplay = document.getElementById('mainDisplay');
+            mainDisplay.innerHTML = "[" + imgName + ": Ansicht]";
+
+            // 2. Aktive Klasse bei Thumbnails setzen (für den Rahmen)
+            const thumbs = document.querySelectorAll('.thumbnail');
+            thumbs.forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Warenkorb Logik
+        function addToCart() {
+            const qty = document.querySelector('.qty-input').value;
+            alert(qty + "x Modell 'Bordeaux' wurde in den Warenkorb gelegt!");
+        }
+    </script>
+
+</body>
+
+</html>
