@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenschutzerklärung - FassBar Manufaktur</title>
+    <title>Impressum - FassBar Manufaktur</title>
     <style>
-        /* --- 1. GRUNDEINSTELLUNGEN --- */
+        /* --- GRUNDEINSTELLUNGEN --- */
         :root {
             --primary-color: #5D4037;
             --secondary-color: #8D6E63;
@@ -22,6 +22,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            /* Sticky Footer Setup */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -42,7 +43,7 @@
             color: var(--primary-color);
         }
 
-        /* --- 2. NAVIGATION --- */
+        /* --- NAVIGATION --- */
         header {
             background-color: var(--white);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -74,31 +75,31 @@
             color: var(--secondary-color);
         }
 
-        /* --- 3. INHALT DATENSCHUTZ --- */
+        /* --- INHALT CONTAINER --- */
         .content-container {
             max-width: 800px;
-            /* Schmaler für bessere Lesbarkeit von Text */
             margin: 3rem auto;
-            padding: 0 2rem;
+            padding: 3rem 2rem;
             background: var(--white);
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            padding: 3rem;
+            width: 90%;
+            /* Damit es auf Handy nicht zu breit ist */
         }
 
         .content-container p {
             margin-bottom: 1.5rem;
         }
 
-        /* --- 4. FOOTER (HIER LAG DEIN PROBLEM) --- */
+        /* --- FOOTER --- */
         footer {
             background-color: var(--primary-color);
             color: var(--white);
             text-align: center;
-            /* WICHTIG: Zentriert den Text */
+            /* Zentriert! */
             padding: 2rem;
             margin-top: auto;
-            /* Drückt den Footer nach ganz unten */
+            /* Footer nach unten drücken */
         }
 
         .footer-links {
@@ -107,7 +108,7 @@
 
         .footer-links a {
             margin: 0 15px;
-            /* WICHTIG: Abstand zwischen den Wörtern */
+            /* Abstand zwischen Links! */
             color: #ccc;
             font-size: 0.9rem;
         }
@@ -133,34 +134,33 @@
     </header>
 
     <main class="content-container">
-        <h1>Datenschutzerklärung</h1>
+        <h1>Impressum</h1>
 
-        <h2>1. Datenschutz auf einen Blick</h2>
+        <h2>Angaben gemäß § 5 TMG</h2>
         <p>
-            <strong>Allgemeine Hinweise</strong><br>
-            Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten
-            passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich
-            identifiziert werden können.
+            Max Mustermann<br>
+            FassBar Manufaktur<br>
+            Musterstraße 1<br>
+            12345 Musterstadt
         </p>
 
-        <h2>2. Datenerfassung auf unserer Website</h2>
+        <h2>Kontakt</h2>
         <p>
-            <strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong><br>
-            Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie
-            dem Impressum dieser Website entnehmen.
+            Telefon: +49 (0) 123 44 55 66<br>
+            E-Mail: info@fassbar-manufaktur-beispiel.de
         </p>
 
+        <h2>Umsatzsteuer-ID</h2>
         <p>
-            <strong>Wie erfassen wir Ihre Daten?</strong><br>
-            Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen (z.B. per E-Mail). Andere Daten
-            werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst (z.B. Internetbrowser,
-            Betriebssystem oder Uhrzeit des Seitenaufrufs).
+            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+            DE 123 456 789
         </p>
 
-        <h2>3. Analyse-Tools und Tools von Drittanbietern</h2>
+        <h2>Streitschlichtung</h2>
         <p>
-            Beim Besuch dieser Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Das geschieht vor allem
-            mit Cookies und mit sogenannten Analyseprogrammen.
+            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+            https://ec.europa.eu/consumers/odr.<br>
+            Unsere E-Mail-Adresse finden Sie oben im Impressum.
         </p>
 
     </main>
@@ -168,8 +168,8 @@
     <footer>
         <p>&copy; 2025 FassBar Manufaktur. Alle Rechte vorbehalten.</p>
         <div class="footer-links">
-            <a href="impressum.html">Impressum</a>
-            <a href="#" style="color:var(--white); text-decoration: underline;">Datenschutz</a>
+            <a href="#" style="color:white; text-decoration: underline;">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
             <a href="agb.html">AGB</a>
         </div>
     </footer>
