@@ -58,6 +58,19 @@
             color: var(--primary-color);
         }
 
+        h1 {
+            overflow-wrap: break-word;
+            hyphens: auto;
+
+            font-size: 2.5rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+        }
+
         /* --- 2. NAVIGATION --- */
         header {
             background-color: var(--white);
