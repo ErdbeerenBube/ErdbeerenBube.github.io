@@ -94,13 +94,16 @@
         /* --- INHALT CONTAINER --- */
         .content-container {
             max-width: 800px;
+            /* Auf großen Bildschirmen maximal 800px breit */
+            width: 90%;
+            /* WICHTIG: Auf Handys nimmt er nur 90% der Breite ein */
             margin: 3rem auto;
-            padding: 3rem 2rem;
+            /* "auto" sorgt dafür, dass die restlichen 10% gleichmäßig als Rand links/rechts verteilt werden */
+            padding: 1.5rem;
+            /* Innenabstand, damit der Text nicht am Rahmen klebt */
             background: var(--white);
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            width: 90%;
-            /* Damit es auf Handy nicht zu breit ist */
         }
 
         .content-container p {
